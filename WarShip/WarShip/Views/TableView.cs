@@ -11,67 +11,50 @@ namespace WarShip.Views
         public void Show(List<PositionShip> position)
         {
             char symv = 'A';
-            bool isDigit = true;
-            for (int i = 0; i <= 10; i++)
+            Console.Write("\t");
+            for (int i = 0; i < 10; i++)
             {
-                List<int> colShip = new List<int>();
+                Console.Write($"{symv}  ");
+                symv++;
+            }
+
+            Console.WriteLine("\n");
+            for (int i = 1; i <= 10; i++)
+            {
+                List<int> shipOnRow = new List<int>();
                 bool isRowHaveShip = false;
                 foreach (var item in position)
                 {
-                    if (item.Alph == i)
+                    if (i == item.Alph)
                     {
+                        shipOnRow.Add(item.Number);
                         isRowHaveShip = true;
-                        colShip.Add(item.Number);
                     }
                 }
-
-                for (int j = 0; j < 11; j++)
+                Console.Write($"{i}\t");
+                for (int j = 1; j <= 10; j++)
                 {
-                    if (i == 0)
+                    if (isRowHaveShip)
                     {
-                        if (j == 0)
+                        foreach (var item in shipOnRow)
                         {
-                            Console.Write("\t");
-                        }
-                        if (j < 10)
-                            Console.Write($"  {symv}");
-                            symv++;
-                    }
-                    else
-                    {
-                        if (isDigit)
-                        {
-                            Console.Write($"{i}\t");
-                            isDigit = false;
-                        }
-                        else
-                        {
-                            if (isRowHaveShip)
+                            if (j == item)
                             {
-                                bool isShip = false;
-                                foreach (var item in colShip)
-                                {
-                                    if (item == j)
-                                    {
-                                        Console.ForegroundColor = ConsoleColor.Green;
-                                        Console.Write("  █");
-                                        Console.ForegroundColor = ConsoleColor.White;
-                                    }
-                                    else
-                                    {
-                                        Console.Write("  █");
-                                    }
-                                }
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.Write("█  ");
+                                Console.ForegroundColor = ConsoleColor.White;
                             }
                             else
                             {
-                                Console.Write("  █");
+                                Console.Write("█  ");
                             }
-
                         }
                     }
+                    else
+                    {
+                        Console.Write("█  ");
+                    }
                 }
-                isDigit = true;
                 Console.WriteLine("\n");
             }
         }
@@ -79,42 +62,25 @@ namespace WarShip.Views
         public void ShowWithCursorParametr(List<PositionShip> position, int col, int row)
         {
             char symv = 'A';
-            bool isDigit = true;
-            int rowTemp = row + 1;
-            for (int i = 0; i <= 10; i++)
+            Console.SetCursorPosition(col, row + 1);
+            Console.Write("\t");
+            for (int i = 0; i < 10; i++)
             {
-                Console.SetCursorPosition(col, rowTemp + i);
+                Console.Write($"{symv}  ");
+                symv++;
+            }
+            int rowTemp = row + 1;
+            Console.WriteLine("\n");
+            for (int i = 1; i <= 10; i++)
+            {
+                Console.SetCursorPosition(col, rowTemp + 1 + i);
+                Console.Write($"{i}\t");
                 for (int j = 1; j <= 10; j++)
                 {
-                    if (i == 0)
-                    {
-                        if (j == 1)
-                        {
-                            Console.Write("\t");
-                        }
-                        Console.Write($"  {symv}");
-                        symv++;
-                    }
-                    else
-                    {
-                        if (isDigit)
-                        {
-                            Console.Write($"{i}\t");
-                            isDigit = false;
-                        }
-                        else
-                        {
-                            Console.Write("  █");
-                        }
-                    }
+                    Console.Write("█  ");
                 }
-                rowTemp++;
-                if (i != 0)
-                {
-                    Console.Write("  █");
-                }
-                isDigit = true;
                 Console.WriteLine("\n");
+                rowTemp++;
             }
         }
     }

@@ -151,7 +151,7 @@ namespace WarShip.Function
             {
                 Console.Write("Введите букву: ");
                 alph = Console.ReadLine();
-                if (alph != "A" && alph == "B" && alph != "C" && alph != "D" && alph != "E" && alph != "F" && alph != "G" && alph != "H" && alph != "I" && alph != "J")
+                if (alph != "A" && alph != "B" && alph != "C" && alph != "D" && alph != "E" && alph != "F" && alph != "G" && alph != "H" && alph != "I" && alph != "J")
                 {
                     Console.WriteLine("Вы должны ввести букву от A-J (буквы прописные)");
                 }
@@ -166,7 +166,7 @@ namespace WarShip.Function
             {
                 Console.Write("Введите число: ");
                 number = Console.ReadLine();
-                if (number != "1" && number == "2" && number != "3" && number != "4" && number != "5" && number != "6" && number != "7" && number != "8" && number != "9" && number != "10")
+                if (number != "1" && number != "2" && number != "3" && number != "4" && number != "5" && number != "6" && number != "7" && number != "8" && number != "9" && number != "10")
                 {
                     Console.WriteLine("Вы должны ввести число от 1-10");
                 }
@@ -239,7 +239,7 @@ namespace WarShip.Function
                 {
                     Console.Write("Выберите направление для корабля: ");
                     direction = Console.ReadLine();
-                    if (direction != "1" && direction == "2" && direction != "3" && direction != "4")
+                    if (direction != "1" && direction != "2" && direction != "3" && direction != "4")
                     {
                         Console.WriteLine("Вы должны ввести число от 1-4");
                     }
@@ -251,12 +251,20 @@ namespace WarShip.Function
                             {
                                 Console.WriteLine("Корабль невозможно поставить");
                             }
+                            else
+                            {
+                                isTrueDirection = true;
+                            }
                         }
                         else if (direction == "2")
                         {
                             if (Int32.Parse(number) + type > 10)
                             {
                                 Console.WriteLine("Корабль невозможно поставить");
+                            }
+                            else
+                            {
+                                isTrueDirection = true;
                             }
                         }
                         else if (direction == "3")
@@ -265,12 +273,20 @@ namespace WarShip.Function
                             {
                                 Console.WriteLine("Корабль невозможно поставить");
                             }
+                            else
+                            {
+                                isTrueDirection = true;
+                            }
                         }
                         else if (direction == "4")
                         {
                             if (Char.Parse(number) - type < 65)
                             {
                                 Console.WriteLine("Корабль невозможно поставить");
+                            }
+                            else
+                            {
+                                isTrueDirection = true;
                             }
                         }
                         else
