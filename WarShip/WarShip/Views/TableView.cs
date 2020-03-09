@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using WarShip.Function;
 using WarShip.Interfaces;
 
@@ -25,9 +26,9 @@ namespace WarShip.Views
                 bool isRowHaveShip = false;
                 foreach (var item in position)
                 {
-                    if (i == item.Alph)
+                    if (i == item.Number)
                     {
-                        shipOnRow.Add(item.Number);
+                        shipOnRow.Add(item.Alph);
                         isRowHaveShip = true;
                     }
                 }
@@ -36,18 +37,20 @@ namespace WarShip.Views
                 {
                     if (isRowHaveShip)
                     {
-                        foreach (var item in shipOnRow)
+                        if (j == shipOnRow[0])
                         {
-                            if (j == item)
-                            {
-                                Console.ForegroundColor = ConsoleColor.Green;
-                                Console.Write("█  ");
-                                Console.ForegroundColor = ConsoleColor.White;
-                            }
-                            else
-                            {
-                                Console.Write("█  ");
-                            }
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.Write("█  ");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            shipOnRow.Remove(shipOnRow[0]);
+                        }
+                        else
+                        {
+                            Console.Write("█  ");
+                        }
+                        if (shipOnRow.Count == 0)
+                        {
+                            isRowHaveShip = false;
                         }
                     }
                     else

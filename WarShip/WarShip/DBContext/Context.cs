@@ -15,7 +15,7 @@ namespace WarShip.DBContext
         public DbSet<Player> Players { get; set;}
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=DESKTOP-NVDGPN3;Database=WarShip;Trusted_connection=true;");
+            optionsBuilder.UseSqlServer("Server=DESKTOP-T1EO1QD;Database=WarShip;Trusted_connection=true;");
         }
     }
 }
