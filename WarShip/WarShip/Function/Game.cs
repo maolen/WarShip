@@ -93,57 +93,65 @@ namespace WarShip.Function
             while (!isTruePunct)
             {
                 Console.Write($"Введите номер корабля: ");
-                string punct = Console.ReadLine();
-                switch (punct)
+                var isDigit = int.TryParse(Console.ReadLine(), out int punct);
+                if (isDigit && (punct > 0 || punct < 5))
                 {
-                    case "1":
-                        type = 1;
-                        if (boat == 0)
-                        {
-                            Console.WriteLine("Кораблей такого типа нет в запасе");
-                        }
-                        else
-                        {
-                            isTruePunct = true;
-                        }
-                        break;
-                    case "2":
-                        type = 2;
-                        if (destroyers == 0)
-                        {
-                            Console.WriteLine("Кораблей такого типа нет в запасе");
-                        }
-                        else
-                        {
-                            isTruePunct = true;
-                        }
-                        break;
-                    case "3":
-                        type = 3;
-                        if (cruisers == 0)
-                        {
-                            Console.WriteLine("Кораблей такого типа нет в запасе");
-                        }
-                        else
-                        {
-                            isTruePunct = true;
-                        }
-                        break;
-                    case "4":
-                        type = 4;
-                        if (battleship == 0)
-                        {
-                            Console.WriteLine("Кораблей такого типа нет в запасе");
-                        }
-                        else
-                        {
-                            isTruePunct = true;
-                        }
-                        break;
-                    default:
-                        Console.WriteLine("Введите число от 1 - 4");
-                        break;
+                    switch (punct)
+                    {
+                        case 1:
+                            type = 1;
+                            if (boat == 0)
+                            {
+                                Console.WriteLine("Кораблей такого типа нет в запасе");
+                            }
+                            else
+                            {
+                                isTruePunct = true;
+                            }
+                            break;
+                        case 2:
+                            type = 2;
+                            if (destroyers == 0)
+                            {
+                                Console.WriteLine("Кораблей такого типа нет в запасе");
+                            }
+                            else
+                            {
+                                isTruePunct = true;
+                            }
+                            break;
+                        case 3:
+                            type = 3;
+                            if (cruisers == 0)
+                            {
+                                Console.WriteLine("Кораблей такого типа нет в запасе");
+                            }
+                            else
+                            {
+                                isTruePunct = true;
+                            }
+                            break;
+                        case 4:
+                            type = 4;
+                            if (battleship == 0)
+                            {
+                                Console.WriteLine("Кораблей такого типа нет в запасе");
+                            }
+                            else
+                            {
+                                isTruePunct = true;
+                            }
+                            break;
+                        default:
+                            Console.WriteLine("Введите число от 1 до 4");
+                            break;
+                    }
                 }
+                else
+                {
+                    Console.WriteLine("Введите число от 1 до 4");
+                }
+                
             }
             string alph = "";
             bool isTrueAlph = false;
@@ -151,16 +159,16 @@ namespace WarShip.Function
             {
                 Console.Write("Введите букву: ");
                 alph = Console.ReadLine();
-                if (alph != "A" && alph != "B" && alph != "C" && alph != "D" && alph != "E" && alph != "F" && alph != "G" && alph != "H" && alph != "I" && alph != "J")
+                if (alph != "A" && alph == "B" && alph != "C" && alph != "D" && alph != "E" && alph != "F" && alph != "G" && alph != "H" && alph != "I" && alph != "J")
                 {
-                    Console.WriteLine("Вы должны ввести букву от A-J (буквы прописные)");
+                    Console.WriteLine("Вы должны ввести букву от A-J");
                 }
                 else
                 {
                     isTrueAlph = true;
                 }
             }
-            string number = "";
+            string number = string.Empty;
             bool isTrueNumber = false;
             while (!isTrueNumber)
             {
